@@ -1,0 +1,30 @@
+{
+  "name": "c3-api-template",
+  "version": "1.0.0",
+  "description": "A base template for creating newly scaffolded API's for the C3 system",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": " NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=localhost node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewc3/c3-api-template.git"
+  },
+  "author": "Justin Seymour",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewc3/c3-api-template/issues"
+  },
+  "homepage": "https://github.com/andrewc3/c3-api-template#readme",
+  "dependencies": {
+    "aws-sdk": "^2.596.0",
+    "express": "^4.17.1",
+    "express-winston": "^4.0.2",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
