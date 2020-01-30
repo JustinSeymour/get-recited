@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>The Ultimate Guide to Web Scraping with Node.js</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-unescaped-markup.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Roboto+Mono:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/news/assets/built/screen.css?v=dffcf06749" />
+    <link rel="stylesheet" type="text/css" href="/news/assets/css/algolia-search.css?v=dffcf06749" />
+    
+    <script src="https://cdn.freecodecamp.org/news-assets/algolia/algoliasearch-3-33-0/algoliasearch.min.js"></script>
+    <script src="https://cdn.freecodecamp.org/news-assets/algolia/autocomplete-0-36-0/autocomplete.min.js"></script>
+
+    <script src="https://embed.runkit.com"></script>
+
+    <link rel="shortcut icon" href="/news/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://www.freecodecamp.org/news/the-ultimate-guide-to-web-scraping-with-node-js-daa2027dcd3/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://www.freecodecamp.org/news/the-ultimate-guide-to-web-scraping-with-node-js-daa2027dcd3/amp/" />
+    
+    <meta property="og:site_name" content="freeCodeCamp.org" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="The Ultimate Guide to Web Scraping with Node.js" />
+    <meta property="og:description" content="So what’s web scraping anyway? It involves automating away the laborious task of
+collecting information from websites.
+
+There are a lot of use cases for web scraping: you might want to collect prices
+from various e-commerce sites for a price comparison site. Or perhaps you need
+flight times and hotel/AirBNB listings for a travel site. Maybe you want to
+collect emails from various directories for sales leads, or use data from the
+internet to train machine learning/AI models. Or you could even be " />
+    <meta property="og:url" content="https://www.freecodecamp.org/news/the-ultimate-guide-to-web-scraping-with-node-js-daa2027dcd3/" />
+    <meta property="og:image" content="https://cdn-media-1.freecodecamp.org/images/1*KkVKtysvgh2hIVRI1Irk-Q.jpeg" />
+    <meta property="article:published_time" content="2018-08-08T00:32:03.000Z" />
+    <meta property="article:modified_time" content="2019-06-02T19:26:49.000Z" />
+    <meta property="article:tag" content="JavaScript" />
+    <meta property="article:tag" content="Web Scraping" />
+    <meta property="article:tag" content="Nodejs" />
+    <meta property="article:tag" content="Tech" />
+    <meta property="article:tag" content="Programming" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/freecodecamp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Ultimate Guide to Web Scraping with Node.js" />
+    <meta name="twitter:description" content="So what’s web scraping anyway? It involves automating away the laborious task of
+collecting information from websites.
+
+There are a lot of use cases for web scraping: you might want to collect prices
+from various e-commerce sites for a price comparison site. Or perhaps you need
+flight times and hotel/AirBNB listings for a travel site. Maybe you want to
+collect emails from various directories for sales leads, or use data from the
+internet to train machine learning/AI models. Or you could even be " />
+    <meta name="twitter:url" content="https://www.freecodecamp.org/news/the-ultimate-guide-to-web-scraping-with-node-js-daa2027dcd3/" />
+    <meta name="twitter:image" content="https://cdn-media-1.freecodecamp.org/images/1*KkVKtysvgh2hIVRI1Irk-Q.jpeg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Daniel Ni" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="JavaScript, Web Scraping, Nodejs, Tech, Programming" />
+    <meta name="twitter:site" content="@freecodecamp" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="466" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "freeCodeCamp.org",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.freecodecamp.org/news/content/images/2019/11/fcc_primary_large_24X210.svg",
+            "width": 210,
+            "height": 24
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Daniel Ni",
+        "url": "https://www.freecodecamp.org/news/author/daniel/",
+        "sameAs": [
+            "https://www.scraperapi.com"
+        ]
+    },
+    "headline": "The Ultimate Guide to Web Scraping with Node.js",
+    "url": "https://www.freecodecamp.org/news/the-ultimate-guide-to-web-scraping-with-node-js-daa2027dcd3/",
+    "datePublished": "2018-08-08T00:32:03.000Z",
+    "dateModified": "2019-06-02T19:26:49.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn-media-1.freecodecamp.org/images/1*KkVKtysvgh2hIVRI1Irk-Q.jpeg",
+        "width": 800,
+        "height": 466
+    },
+    "keywords": "JavaScript, Web Scraping, Nodejs, Tech, Programming",
+    "description": "So what’s web scraping anyway? It involves automating away the laborious task of\ncollecting information from websites.\n\nThere are a lot of use cases for web scraping: you might want to collect prices\nfrom various e-commerce sites for a price comparison site. Or perhaps you need\nflight times and hotel/AirBNB listings for a travel site. Maybe you want to\ncollect emails from various directories for sales leads, or use data from the\ninternet to train machine learning/AI models. Or you could even be ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.freecodecamp.org/news/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 2.37" />
+    <link rel="alternate" type="application/rss+xml" title="freeCodeCamp.org" href="https://www.freecodecamp.org/news/rss/" />
+    <script>
+  // Set up dataLayer with data if provided
+  window.dataLayer = window.dataLayer || [{ gaPropertyId: 'UA-55446531-20' }];
+
+  // Initialized GTM via gtag
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-55446531-20');
+
+  // Configure and initialize GTM
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl+'&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer', 'GTM-5D6RKKP');
+</script>
+
+<script>
+// For Runkit embeds
+document.addEventListener('DOMContentLoaded', function() {
+  (function() {
+    const runkitElements = document.querySelectorAll('.runkit-element');
+	  runkitElements.forEach(function(element) {
+      const source = element.innerHTML.replace(/&amp;/g, '&');
+      element.innerHTML = '';
+      RunKit.createNotebook({element, source});
+	  });
+  })();
+});
+</script>
+
+</head>
+
+<body class="post-template tag-javascript tag-web-scraping tag-nodejs tag-tech tag-programming">
+
+    <div class="site-wrapper">
+        <nav class="site-nav nav-padding">
+    <div class="site-nav-left">
+        <form id="search-form" onsubmit="submitSearch()">
+  <div role="search" class="searchbox__wrapper">
+    <input type="search" placeholder="Search 5,000+ tutorials" id="search-input" />
+    <button type="submit" title="Submit your search query." class="ais-SearchBox-submit">
+      <svg class="ais-SearchBox-submitIcon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 40 40">
+        <path d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z" />
+      </svg>
+    </button>
+  </div>
+</form>
+
+<script>
+  const client = algoliasearch('QMJYL5WYTI', '4318af87aa3ce128708f1153556c6108');
+  const index = client.initIndex('news');
+  const screenWidth = window.screen.width;
+  const screenHeight = window.screen.height;
+  const hitsToRender = (screenWidth >= 767 && screenHeight >= 768) ? 8 : 5;
+  autocomplete('#search-input', { 
+      hint: false,
+      keyboardShortcuts: ['s', 191]
+    }, [
+    {
+      source: autocomplete.sources.hits(index, { hitsPerPage: hitsToRender }),
+      debounce: 250,
+      templates: {
+        suggestion: (suggestion, result) => {
+          hits = true;
+          return `
+            <a href="${suggestion.url}">
+              <div class="algolia-result">
+                <span>${suggestion._highlightResult.title.value}</span>
+              </div>
+            </a>
+          `;
+        },
+        empty: (options) => {
+          hits = false;
+          return `
+            <div class="algolia-result">
+              No tutorials found
+            </div>
+          `;
+        },
+        footer: (query, result) => {
+          if (!query.isEmpty) {
+            return `
+              <hr/>
+              <a id="algolia-footer-selector" href="https://www.freecodecamp.org/news/search?query=${result.query}">
+                <div class="algolia-result algolia-footer">
+                  <span>See all results for ${result.query}</span>
+                </div>
+              </a>
+            `;
+          }
+        }
+      }
+    }
+  ]).on('autocomplete:closed', () => {
+    // Clicked off dropdown or pressed Esc key
+    hits = false;
+  }).on('autocomplete:selected', (event, suggestion, dataset, context) => {
+    // Set to hit URL if hit is selected by mouse click or enter key
+    hitSelected = suggestion.url;
+    // Do nothing on click, as the browser will already do it
+    if (context.selectionMethod === 'click') {
+      return;
+    }
+    // Change the page, for example, on other events
+    window.location.assign(suggestion.url);
+  });
+
+  /* 
+    If no hits in the Autocomplete dropdown are highlighted,
+    treat input like normal search bar
+  */
+  const searchForm = document.getElementById('search-form');
+  const input = document.getElementById('search-input');
+  let searchQuery, hitSelected, hits;
+
+  input.addEventListener('keyup', e => {
+    searchQuery = input.value;
+  });
+
+  /*
+    Prevent form from being submitted when magnifying
+    glass is clicked or enter pressed with no query
+    or hits
+  */
+  searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+  });
+
+  /*
+    Search for highlighted hit or search query
+    when search button or enter is pressed
+  */
+  function submitSearch() {
+    hitSelected = document.getElementsByClassName('aa-cursor')[0];
+
+    if (hitSelected && searchQuery) {
+      const articleUrl = hitSelected.querySelector('a').href;
+      window.location.assign(articleUrl);
+    } else if (!hitSelected && searchQuery && hits) {
+      window.location.assign(`https://www.freecodecamp.org/news/search?query=${searchQuery}`);
+    }
+  }
+</script>
+    </div>
+    <div class="site-nav-middle">
+        <a class="site-nav-logo" href="https://www.freecodecamp.org/news"><img src="/news/content/images/2019/11/fcc_primary_large_24X210.svg" alt="freeCodeCamp.org" /></a>
+    </div>
+    <div class="site-nav-right main-nav">
+        <div class="main-nav-group">
+            <ul class="nav" role="menu">
+    <li class="nav-news" role="menuitem"><a href="https://www.freecodecamp.org/news/">/news</a></li>
+    <li class="nav-forum" role="menuitem"><a href="https://www.freecodecamp.org/forum/">/forum</a></li>
+    <li class="nav-learn" role="menuitem"><a href="https://www.freecodecamp.org/learn/">/learn</a></li>
+</ul>
+
+        </div>
+    </div>
+    <button class="site-nav-right toggle-button-nav">
+        Menu
+    </button>
+</nav>
+
+
+        
+
+
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post tag-javascript tag-web-scraping tag-nodejs tag-tech tag-programming ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date"
+                        datetime="2018-08-07">7 August 2018</time>
+                    <span class="date-divider">/</span>
+                    <a href="/news/tag/javascript/">
+                        #JavaScript
+                    </a>
+                </section>
+                <h1 class="post-full-title">The Ultimate Guide to Web Scraping with Node.js</h1>
+            </header>
+
+            <div class="post-full-author-header">
+
+
+                
+<section class="author-card">
+    <span class="avatar-wrapper"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
+</span>
+    <section class="author-card-content">
+        <h4 class="author-card-name"><a href="/news/author/daniel/">Daniel Ni</a></h4>
+        <p>Read <a href="/news/author/daniel/">more posts</a> by this author.</p>
+    </section>
+</section>
+
+
+            </div>
+
+            <figure class="post-full-image">
+                <img srcset="https://cdn-media-1.freecodecamp.org/images/1*KkVKtysvgh2hIVRI1Irk-Q.jpeg 300w,
+                            https://cdn-media-1.freecodecamp.org/images/1*KkVKtysvgh2hIVRI1Irk-Q.jpeg 600w,
+                            https://cdn-media-1.freecodecamp.org/images/1*KkVKtysvgh2hIVRI1Irk-Q.jpeg 1000w,
+                            https://cdn-media-1.freecodecamp.org/images/1*KkVKtysvgh2hIVRI1Irk-Q.jpeg 2000w" sizes="(max-width: 800px) 400px,
+                            (max-width: 1170px) 700px,
+                            1400px" src="https://cdn-media-1.freecodecamp.org/images/1*KkVKtysvgh2hIVRI1Irk-Q.jpeg" alt="The Ultimate Guide to Web Scraping with Node.js"
+                    onerror="this.style.display='none'" />
+            </figure>
+
+            <section class=" post-full-content">
+                <div class="post-content">
+                    <p>So what’s web scraping anyway? It involves automating away the laborious task of collecting information from websites.</p><p>There are a lot of use cases for web scraping: you might want to collect prices from various e-commerce sites for a price comparison site. Or perhaps you need flight times and hotel/AirBNB listings for a travel site. Maybe you want to collect emails from various directories for sales leads, or use data from the internet to train machine learning/AI models. Or you could even be wanting to build a search engine like Google!</p><p>Getting started with web scraping is easy, and the process can be broken down into two main parts:</p><ul><li>acquiring the data using an HTML request library or a headless browser,</li><li>and parsing the data to get the exact information you want.</li></ul><p>This guide will walk you through the process with the popular Node.js <a href="https://github.com/request/request-promise" rel="noopener">request-promise</a> module, <a href="https://github.com/cheeriojs/cheerio" rel="noopener">CheerioJS</a>, and <a href="https://github.com/GoogleChrome/puppeteer" rel="noopener">Puppeteer</a>. Working through the examples in this guide, you will learn all the tips and tricks you need to become a pro at gathering any data you need with Node.js!</p><p>We will be gathering a list of all the names and birthdays of U.S. presidents from Wikipedia and the titles of all the posts on the front page of Reddit.</p><p>First things first: Let’s install the libraries we’ll be using in this guide (Puppeteer will take a while to install as it needs to download Chromium as well).</p><h3 id="making-your-first-request">Making your first request</h3><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/416fa822eb16e93222b0a836514ca99a.js"></script>
+<!--kg-card-end: html--><p>Next, let’s open a new text file (name the file potusScraper.js), and write a quick function to get the HTML of the Wikipedia “List of Presidents” page.</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/10273ecc0a32cf9110cfcb2e443b4a14.js"></script><!--kg-card-end: html--><p>Output:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/140aa0442cf8cc276bf72ce8f4722702.js"></script><!--kg-card-end: html--><h3 id="using-chrome-devtools">Using Chrome DevTools</h3><p>Cool, we got the raw HTML from the web page! But now we need to make sense of this giant blob of text. To do that, we’ll need to use Chrome DevTools to allow us to easily search through the HTML of a web page.</p><p>Using Chrome DevTools is easy: simply open Google Chrome, and right click on the element you would like to scrape (in this case I am right clicking on George Washington, because we want to get links to all of the individual presidents’ Wikipedia pages):</p><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="https://cdn-media-1.freecodecamp.org/images/1*gLKhu_EO-cDqYna1P9WL_w.png" class="kg-image"></figure><!--kg-card-end: image--><p>Now, simply click inspect, and Chrome will bring up its DevTools pane, allowing you to easily inspect the page’s source HTML.</p><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="https://cdn-media-1.freecodecamp.org/images/1*HSUjFgji22vjwvGi2uZe1A.png" class="kg-image"></figure><!--kg-card-end: image--><h3 id="parsing-html-with-cheerio-js">Parsing HTML with Cheerio.js</h3><p>Awesome, Chrome DevTools is now showing us the exact pattern we should be looking for in the code (a “big” tag with a hyperlink inside of it). Let’s use Cheerio.js to parse the HTML we received earlier to return a list of links to the individual Wikipedia pages of U.S. presidents.</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/104d72fcbcdc2b86af9f44dadca1cde4.js"></script><!--kg-card-end: html--><p>Output:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/6bf511c579433289b8e7abd426ef0534.js"></script><!--kg-card-end: html--><p>We check to make sure there are exactly 45 elements returned (the number of U.S. presidents), meaning there aren’t any extra hidden “big” tags elsewhere on the page. Now, we can go through and grab a list of links to all 45 presidential Wikipedia pages by getting them from the “attribs” section of each element.</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/63be1711b6b7d2ee771095777791d049.js"></script><!--kg-card-end: html--><p>Output:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/5be18aa131e2a224f13f79b9d47b830b.js"></script><!--kg-card-end: html--><p>Now we have a list of all 45 presidential Wikipedia pages. Let’s create a new file (named potusParse.js), which will contain a function to take a presidential Wikipedia page and return the president’s name and birthday. First things first, let’s get the raw HTML from George Washington’s Wikipedia page.</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/6bafd36cf3ba6aa12ce7eb6d45063d6a.js"></script><!--kg-card-end: html--><p>Output:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/76c56e2c587809f8b776061627dc2db3.js"></script><!--kg-card-end: html--><p>Let’s once again use Chrome DevTools to find the syntax of the code we want to parse, so that we can extract the name and birthday with Cheerio.js.</p><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="https://cdn-media-1.freecodecamp.org/images/1*exzZbuIwfrCcbTM2rr9_bw.png" class="kg-image"></figure><!--kg-card-end: image--><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="https://cdn-media-1.freecodecamp.org/images/1*yth6AmHpywM77n0wEprpiA.png" class="kg-image"></figure><!--kg-card-end: image--><p>So we see that the name is in a class called “firstHeading” and the birthday is in a class called “bday”. Let’s modify our code to use Cheerio.js to extract these two classes.</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/51d70b35c6b45459038439e5fa118fbc.js"></script><!--kg-card-end: html--><p>Output:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/459c6bdf3fd4b6c9252dccbff4dd06db.js"></script><!--kg-card-end: html--><h3 id="putting-it-all-together">Putting it all together</h3><p>Perfect! Now let’s wrap this up into a function and export it from this module.</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/a24369f8f0b1bb805874e3f1229b9fa3.js"></script><!--kg-card-end: html--><p>Now let’s return to our original file potusScraper.js and require the potusParse.js module. We’ll then apply it to the list of wikiUrls we gathered earlier.</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/b46842acda7e87d5bce57175974ba11c.js"></script><!--kg-card-end: html--><p>Output:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/c1f85d62704d4837c9c20fb9f11a9ecd.js"></script><!--kg-card-end: html--><h3 id="rendering-javascript-pages">Rendering JavaScript Pages</h3><p>Voilà! A list of the names and birthdays of all 45 U.S. presidents. Using just the request-promise module and Cheerio.js should allow you to scrape the vast majority of sites on the internet.</p><p>Recently, however, many sites have begun using JavaScript to generate dynamic content on their websites. This causes a problem for request-promise and other similar HTTP request libraries (such as axios and fetch), because they only get the response from the initial request, but they cannot execute the JavaScript the way a web browser can.</p><p>Thus, to scrape sites that require JavaScript execution, we need another solution. In our next example, we will get the titles for all of the posts on the front page of Reddit. Let’s see what happens when we try to use request-promise as we did in the previous example.</p><p>Output:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/1767e286bca624f1bc0aff8b35983b06.js"></script><!--kg-card-end: html--><p>Here’s what the output looks like:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/a5cb4b9d8d18878ddeefa7e6cfd21ba6.js"></script><!--kg-card-end: html--><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="https://cdn-media-1.freecodecamp.org/images/1*mKzPVGRR4CFKMwQw5y_YnQ.png" class="kg-image"></figure><!--kg-card-end: image--><p>Hmmm…not quite what we want. That’s because getting the actual content requires you to run the JavaScript on the page! With Puppeteer, that’s no problem.</p><p>Puppeteer is an extremely popular new module brought to you by the Google Chrome team that allows you to control a headless browser. This is perfect for programmatically scraping pages that require JavaScript execution. Let’s get the HTML from the front page of Reddit using Puppeteer instead of request-promise.</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/d29dc43d7f00451c43b8056f716b07b6.js"></script><!--kg-card-end: html--><p>Output:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/1c05f2d36c9a34f93d1c78ff754c105b.js"></script><!--kg-card-end: html--><p>Nice! The page is filled with the correct content!</p><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="https://cdn-media-1.freecodecamp.org/images/1*N5HtAiijcMEB_fBQvPd7Ow.png" class="kg-image"></figure><!--kg-card-end: image--><p>Now we can use Chrome DevTools like we did in the previous example.</p><!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="https://cdn-media-1.freecodecamp.org/images/1*tHSgjPMvn3M26N2f7Q2B1Q.png" class="kg-image"></figure><!--kg-card-end: image--><p>It looks like Reddit is putting the titles inside “h2” tags. Let’s use Cheerio.js to extract the h2 tags from the page.</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/8902791ba6f4b95a7aacebc5ef1348b8.js"></script><!--kg-card-end: html--><p>Output:</p><!--kg-card-begin: html--><script src="https://gist.github.com/scraperapi/636185affefd429503e349f2e1616df2.js"></script>
+<style>
+.gist { width: 100% !important; overflow:auto; }
+</style>
+<!--kg-card-end: html--><h3 id="additional-resources">Additional Resources</h3><p>And there’s the list! At this point you should feel comfortable writing your first web scraper to gather data from any website. Here are a few additional resources that you may find helpful during your web scraping journey:</p><ul><li><a href="https://www.scraperapi.com/blog/the-10-best-rotating-proxy-services-for-web-scraping" rel="noopener">List of web scraping proxy services</a></li><li><a href="https://www.scraperapi.com/blog/the-10-best-web-scraping-tools" rel="noopener">List of handy web scraping tools</a></li><li><a href="https://www.scraperapi.com/blog/5-tips-for-web-scraping">List of web scraping tips</a></li><li><a href="https://www.scraperapi.com/blog/free-shared-dedicated-datacenter-residential-rotating-proxies-for-web-scraping">Comparison of web scraping proxies</a></li><li><a href="https://github.com/cheeriojs/cheerio" rel="noopener">Cheerio Documentation</a></li><li><a href="https://github.com/GoogleChrome/puppeteer" rel="noopener">Puppeteer Documentation</a></li></ul>
+                </div>
+                <hr />
+                <p class="social-row">
+
+    If this article was helpful,
+    <a class='cta-button' onclick="window.open(`https://twitter.com/intent/tweet?text=The%20Ultimate%20Guide%20to%20Web%20Scraping%20with%20Node.js%0A%0Ahttps%3A%2F%2Fwww.freecodecamp.org%2Fnews%2Fthe-ultimate-guide-to-web-scraping-with-node-js-daa2027dcd3%2F`, 'share-twitter', 'width=550,height=235' ); return false;">
+        tweet it.</a>
+</p>                
+<div class='learn-cta-row'>
+    <p>
+        Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as
+        developers. <a class='cta-button' href='https://www.freecodecamp.org/learn'>Get started</a>
+    </p>
+</div>            </section>
+
+
+
+        </article>
+    </div>
+</main>
+
+
+
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            <article class="read-next-card" 
+                 style="background-image: url(/news/content/images/size/w600/2019/11/fcc_ghost_publication_cover.png)" 
+                >
+                <header class="read-next-card-header">
+                    <p class="read-next-card-header-sitetitle">Countinue reading about</p>
+                    <h3 class="read-next-card-header-title"><a href="/news/tag/javascript/">JavaScript</a></h3>
+                </header>
+                <div class="read-next-card-content">
+                    <ul>
+                        <li><a href="/news/join-the-code-book-club/">Join The CodeBookClub: A Virtual Meetup For Developers To Learn Together</a></li>
+                        <li><a href="/news/4-main-differences-between-foreach-and-map/">The Differences Between forEach() and map() that Every Developer Should Know</a></li>
+                        <li><a href="/news/applications-of-the-reduce-function-in-javascript/">Intro to JavaScript APIs: The Reduce Function</a></li>
+                    </ul>
+                </div>
+                <footer class="read-next-card-footer">
+                    <a href="/news/tag/javascript/">See all 1509 posts
+                        →</a>
+                </footer>
+            </article>
+
+            <article
+    class="post-card post tag-gulp tag-web-development tag-technology tag-coding tag-programming ">
+
+    <a class="post-card-image-link" href="/news/super-simple-gulp-tutorial-for-beginners-45141974bfe8/">
+        <img class="post-card-image" srcset="https://cdn-media-1.freecodecamp.org/images/1*4oEHylwkvSTcgoxgygdbcg.png 300w,
+                    https://cdn-media-1.freecodecamp.org/images/1*4oEHylwkvSTcgoxgygdbcg.png 600w,
+                    https://cdn-media-1.freecodecamp.org/images/1*4oEHylwkvSTcgoxgygdbcg.png 1000w,
+                    https://cdn-media-1.freecodecamp.org/images/1*4oEHylwkvSTcgoxgygdbcg.png 2000w" sizes="(max-width: 1000px) 400px, 700px"
+            onerror="this.style.display='none'" src="https://cdn-media-1.freecodecamp.org/images/1*4oEHylwkvSTcgoxgygdbcg.png" alt="Super simple Gulp tutorial for beginners" />
+    </a>
+
+    <div class="post-card-content">
+
+        <div class="post-card-content-link">
+
+            <header class="post-card-header">
+                <span class="post-card-tags">
+                    <a href="/news/tag/gulp/">
+                        #Gulp
+                    </a>
+                </span>
+                <h2 class="post-card-title">
+                    <a href="/news/super-simple-gulp-tutorial-for-beginners-45141974bfe8/">
+                        Super simple Gulp tutorial for beginners
+                    </a>
+                </h2>
+            </header>
+
+        </div>
+
+
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Jessica Chan
+                    </div>
+
+                    <a href="/news/author/thecodercoder/" class="static-avatar">
+                        <img class="author-profile-image" src="//www.gravatar.com/avatar/e9baa1d456a70fcb1d1427f6558de8b5?s&#x3D;250&amp;d&#x3D;mm&amp;r&#x3D;x" alt="Jessica Chan" />
+                    </a>
+                </li>
+            </ul>
+
+            <a class="meta-item" href="/news/author/thecodercoder/">Jessica Chan</a>
+            <time class="meta-item">a year ago</time>
+
+
+
+        </footer>
+
+    </div>
+
+</article>
+            <article
+    class="post-card post tag-freelancing tag-software-development tag-programming tag-technology tag-jobs ">
+
+    <a class="post-card-image-link" href="/news/how-students-or-anyone-can-make-extra-money-through-software-freelancing-4c802c43d1a1/">
+        <img class="post-card-image" srcset="https://cdn-media-1.freecodecamp.org/images/1*Cmbqoa2eE4czuh_2DwY4LQ.jpeg 300w,
+                    https://cdn-media-1.freecodecamp.org/images/1*Cmbqoa2eE4czuh_2DwY4LQ.jpeg 600w,
+                    https://cdn-media-1.freecodecamp.org/images/1*Cmbqoa2eE4czuh_2DwY4LQ.jpeg 1000w,
+                    https://cdn-media-1.freecodecamp.org/images/1*Cmbqoa2eE4czuh_2DwY4LQ.jpeg 2000w" sizes="(max-width: 1000px) 400px, 700px"
+            onerror="this.style.display='none'" src="https://cdn-media-1.freecodecamp.org/images/1*Cmbqoa2eE4czuh_2DwY4LQ.jpeg" alt="How students (or anyone) can make extra money through software freelancing ?" />
+    </a>
+
+    <div class="post-card-content">
+
+        <div class="post-card-content-link">
+
+            <header class="post-card-header">
+                <span class="post-card-tags">
+                    <a href="/news/tag/freelancing/">
+                        #Freelancing
+                    </a>
+                </span>
+                <h2 class="post-card-title">
+                    <a href="/news/how-students-or-anyone-can-make-extra-money-through-software-freelancing-4c802c43d1a1/">
+                        How students (or anyone) can make extra money through software freelancing ?
+                    </a>
+                </h2>
+            </header>
+
+        </div>
+
+
+        <footer class="post-card-meta">
+
+            <time class="meta-item-single">a year ago</time>
+
+
+        </footer>
+
+    </div>
+
+</article>
+        </div>
+    </div>
+</aside>
+
+
+
+
+        <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-row">
+            <div class="footer-desc-col">
+                <p>freeCodeCamp is a donor-supported tax-exempt 501(c)(3) nonprofit organization (United States Federal
+                    Tax Identification Number: 82-0779546)
+                </p>
+                <p>
+                    Our mission: to help people learn to code for free. We accomplish this by creating thousands of
+                    videos, articles, and interactive coding lessons - all freely available to the public. We also have
+                    thousands of freeCodeCamp study groups around the world.
+                </p>
+                <p>
+                    Donations to freeCodeCamp go toward our education initiatives, and help pay for servers, services,
+                    and staff.
+                </p>
+                <p class="footer-donation">
+                    You can&nbsp;<a href="https://freecodecamp.org/donate" class="inline" rel="noopener noreferrer"
+                        target="_blank">make a tax-deductible donation here</a>.
+                </p>
+            </div>
+            <div class="footer-col-1 our-nonprofit">
+                <div class="col-header">Our Nonprofit</div>
+                <a href="https://www.freecodecamp.org/news/about/">About</a>
+                <a href="https://www.linkedin.com/school/free-code-camp/people/" rel="noopener noreferrer"
+                    target="_blank">Alumni Network</a>
+                <a href="https://github.com/freeCodeCamp/">Open Source</a>
+                <a href="https://www.freecodecamp.org/shop/" rel="noopener noreferrer" target="_blank">Shop</a>
+                <a href="https://www.freecodecamp.org/news/support/">Support</a>
+                <a href="https://www.freecodecamp.org/news/sponsors/">Sponsors</a>
+                <a href="https://www.freecodecamp.org/news/academic-honesty-policy/">Academic Honesty</a>
+                <a href="https://www.freecodecamp.org/news/code-of-conduct/">Code of Conduct</a>
+                <a href="https://www.freecodecamp.org/news/privacy-policy/">Privacy Policy</a>
+                <a href="https://www.freecodecamp.org/news/terms-of-service/">Terms of Service</a>
+                <a href="https://www.freecodecamp.org/news/copyright-policy/">Copyright Policy</a>
+            </div>
+            <div class="footer-col-2 trending-guides">
+                <div class="col-header">Trending Guides</div>
+                <a href="https://www.freecodecamp.org/news/2019-web-developer-roadmap/">2019 Web Developer Roadmap</a>
+                <a href="https://www.freecodecamp.org/news/best-python-tutorial/">Python Tutorial</a>
+                <a
+                    href="https://www.freecodecamp.org/news/understanding-flexbox-everything-you-need-to-know-b4013d4dc9af/">CSS
+                    Flexbox Guide</a>
+                <a href="https://www.freecodecamp.org/news/best-javascript-tutorial/">JavaScript Tutorial</a>
+                <a href="https://www.freecodecamp.org/news/python-example/">Python Example </a>
+                <a href="https://www.freecodecamp.org/news/best-html-html5-tutorial/">HTML Tutorial</a>
+                <a href="https://www.freecodecamp.org/news/linux-command-line-bash-tutorial/">Linux Command Line
+                    Guide</a>
+                <a href="https://www.freecodecamp.org/news/javascript-example/">JavaScript Example</a>
+                <a href="https://www.freecodecamp.org/news/best-git-tutorial/">Git Tutorial</a>
+                <a href="https://www.freecodecamp.org/news/best-react-javascript-tutorial/">React Tutorial</a>
+                <a href="https://www.freecodecamp.org/news/best-java-8-tutorial/">Java Tutorial</a>
+
+            </div>
+            <div class="footer-col-3">
+                <div class="col-spacer"></div>
+                <a href="https://www.freecodecamp.org/news/the-best-linux-tutorials/">Linux Tutorial</a>
+                <a href="https://www.freecodecamp.org/news/best-css-and-css3-tutorial/">CSS Tutorial</a>
+                <a href="https://www.freecodecamp.org/news/the-best-jquery-examples/">jQuery Example</a>
+                <a href="https://www.freecodecamp.org/news/best-sql-database-tutorial/">SQL Tutorial</a>
+                <a href="https://www.freecodecamp.org/news/css-example-css3/">CSS Example</a>
+                <a href="https://www.freecodecamp.org/news/react-examples-reactjs/">React Example</a>
+                <a href="https://www.freecodecamp.org/news/best-angular-tutorial-angularjs/">Angular Tutorial</a>
+                <a href="https://www.freecodecamp.org/news/the-best-bootstrap-examples/">Bootstrap Example</a>
+                <a href="https://www.freecodecamp.org/news/the-ultimate-guide-to-ssh-setting-up-ssh-keys/">How to Set Up
+                    SSH Keys</a>
+                <a href="https://www.freecodecamp.org/news/best-wordpress-tutorial/">WordPress Tutorial</a>
+                <a href="https://www.freecodecamp.org/news/the-best-php-examples/">PHP Example</a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+
+
+    <script>
+        var images = document.querySelectorAll('.kg-gallery-image img');
+        images.forEach(function (image) {
+            var container = image.closest('.kg-gallery-image');
+            var width = image.attributes.width.value;
+            var height = image.attributes.height.value;
+            var ratio = width / height;
+            container.style.flex = ratio + ' 1 0%';
+        })
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+        </script>
+    <script type="text/javascript" src="/news/assets/built/jquery.fitvids.js?v=dffcf06749"></script>
+
+    <script type="text/javascript" src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-unescaped-markup.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-markup-templating.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-bash.min.js"></script>
+    <script type="text/javascript" src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-c.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-clojure.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-cpp.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-csharp.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-css.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-docker.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-elixir.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-erlang.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-git.min.js"></script>
+    <script type="text/javascript" src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-go.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-graphql.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-haskell.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-java.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-javascript.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-json.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-jsx.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-kotlin.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-lua.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-markup.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-php.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-python.min.js"></script>
+    <script type="text/javascript" src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-r.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-ruby.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-rust.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-scala.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-sql.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-swift.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-typescript.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-yaml.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        // Start fitVids
+        var $postContent = $(".post-full-content");
+        $postContent.fitVids();
+        // End fitVids
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(".toggle-button-nav").click(function () {
+            $(".nav").toggleClass("show-main-nav-items");
+            $(".site-nav").toggleClass("expand-nav");
+            $(".toggle-button-nav").toggleClass("reverse-toggle-color");
+            $(".site-nav-left").toggleClass("display-search");
+        });
+    });
+</script>
+
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D6RKKP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"55c52eda5e06ac3a","version":"2019.10.2","startTime":1580237751979}'></script>
+</body>
+
+</html>
