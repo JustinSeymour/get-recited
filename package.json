@@ -1,5 +1,5 @@
 {
-  "name": "c3-api-template",
+  "name": "recited-app",
   "version": "1.0.0",
   "description": "A base template for creating newly scaffolded API's for the C3 system",
   "main": "server.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewc3/c3-api-template.git"
+    "url": "git+https://github.com//JustinSeymour/get-recited.git"
   },
   "author": "Justin Seymour",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/andrewc3/c3-api-template/issues"
+    "url": "https://github.com/JustinSeymour/get-recited/issues"
   },
-  "homepage": "https://github.com/andrewc3/c3-api-template#readme",
+  "homepage": "https://github.com/JustinSeymour/get-recited#readme",
   "dependencies": {
     "@google-cloud/text-to-speech": "^2.1.2",
     "aws-sdk": "^2.596.0",

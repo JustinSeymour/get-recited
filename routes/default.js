@@ -1,5 +1,5 @@
 /*
- * C3 Maintenance Solutions Botswana Pty Ltd
+ * Recited App
  * Author: Justin Seymour
  *
  * Handler for the default routes, usable on the router in place of actual routes

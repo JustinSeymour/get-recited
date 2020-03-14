@@ -1,6 +1,6 @@
 
 /*
- * C3 Maintenance Solutions Botswana Pty Ltd
+ * Recited App
  * Author: Justin Seymour
  *
  * Configuration settings for the test runners
