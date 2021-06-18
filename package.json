@@ -28,7 +28,7 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
     "sanitize-html": "^1.21.1",
-    "striptags": "^3.1.1",
+    "striptags": "^3.2.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
