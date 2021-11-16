@@ -20,7 +20,7 @@
   "homepage": "https://github.com/JustinSeymour/get-recited#readme",
   "dependencies": {
     "@google-cloud/text-to-speech": "^2.1.2",
-    "aws-sdk": "^2.596.0",
+    "aws-sdk": "^2.814.0",
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "express-winston": "^4.0.2",
